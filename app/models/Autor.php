@@ -46,16 +46,16 @@ class Autor extends Model {
     }
 
 
-    public function update($id) : void
+    public function update(int $id) : void
     {
-        $sql="UPDATE ".$this->table." SET name=:name, address=:address, phone=:phone, email=:email WHERE id=:id";
+        $sql="UPDATE ".$this->table." SET imie=:imie, nazwisko=:nazwisko, data_urodzenia=:data_urodzenia, aktywny=:aktywny WHERE id=:id";
         try {
         $stmt=$this->dbh->prepare($sql);
-        $stmt->bindParam(":name", $this->name, PDO::PARAM_STR);
-        $stmt->bindParam(":address", $this->address, PDO::PARAM_STR);
-        $stmt->bindParam(":phone", $this->phone, PDO::PARAM_STR);
-        $stmt->bindParam(":email", $this->email, PDO::PARAM_STR);
-        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmt->bindParam(":imie", $this->imie, PDO::PARAM_STR);
+        $stmt->bindParam(":nazwisko", $this->nazwisko, PDO::PARAM_STR);
+        $stmt->bindParam(":data_urodzenia", $this->data_urodzenia, PDO::PARAM_STR);
+        $stmt->bindParam(":aktywny", $this->aktywny, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         } catch (\PDOException $e) {
             die($e->getMessage());

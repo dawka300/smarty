@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Library\Controller;
 use App\Model\Autor;
+use App\Model\Ksiazka;
+
 //use App\Model\Product;
 
 class Autorzy extends Controller {
@@ -70,25 +72,25 @@ class Autorzy extends Controller {
 
         if (!empty($_POST)){
 
-            $name=sanitize($_POST['name']);
-            $address=sanitize($_POST['address']);
-            $email=filter_var(sanitize($_POST['email']), FILTER_SANITIZE_EMAIL);
-            $phone=$_POST['phone'];
-            $id=(int)sanitize($_POST['id']);
+            $imie = sanitize($_POST['first_name']);
+            $nazwisko = sanitize($_POST['last_name']);
+            $data_urodzenia = $_POST['birthday'];
+            $aktywny = sanitize($_POST['is_active']);
+            $id = (int)sanitize($_POST['id']);
         }else {
             header('Refresh: 5, URL=./');
             die("Invalid data");
         }
 
 
-        $this->producer->name=$name;
-        $this->producer->email=$email;
-        $this->producer->phone=$phone;
-        $this->producer->address=$address;
+        $this->autor->imie = $imie;
+        $this->autor->nazwisko = $nazwisko;
+        $this->autor->data_urodzenia = $data_urodzenia;
+        $this->autor->aktywny = $aktywny;
 
-        $this->producer->update($id);
+        $this->autor->update($id);
 
-        header('Location: ./');
+        header('Location: ./autorzy');
 
 
     }
@@ -96,23 +98,24 @@ class Autorzy extends Controller {
     public function delete(){
 
         if ($_POST['id']){
-            $id=sanitize((int)$_POST['id']);
+            $id = sanitize((int)$_POST['id']);
         }else {
             header('Refresh: 5, URL=./');
             die("Invalid data");
 
         }
 
-        $this->producer->delete($id);
+        $this->autor->delete($id);
 
-        header('Location: ./');
+        header('Location: ./autorzy');
     }
     public function show($id){
-        $products=new Product();
-        $products=$products->getAllByProducerId($id);
+        $ksiazki = new Ksiazka();
+        $ksiazki = $ksiazki->getAllByAuthorId($id);
 //        $this->producer->db->setTable('producers');
 
-        $producer=$this->producer->find($id);
+        $autor = $this->autor->find($id);
+
         $this->view('producers/showProducts', ['title'=>'Producer\'s products', 'products'=>$products, 'producer'=>$producer]);
 
     }
@@ -122,11 +125,16 @@ class Autorzy extends Controller {
            return null;
         }
         $sql = $this->createSql($_POST['ajax']);
+        $response = $this->autor->queryRow($sql);
+
+        $response = ['odp' => $response];
+        echo json_encode($response);
+        exit();
 
     }
     protected function createSql(array $post) : string
     {
-        $sql = "SELECT * FROM autor WHERE";
+        $sql = "SELECT id, imie, nazwisko, data_urodzenia, aktywny FROM autor WHERE";
         $count = false;
         if($post['imie']){
             $sql .= " imie LIKE '%". $post['imie'] ."%' ";

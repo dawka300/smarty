@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 20:55:11
+/* Smarty version 3.1.36, created on 2020-10-05 23:44:14
   from 'C:\xampp\htdocs\biblioteka\public\templates\autorzy\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7b6c0fb68bc8_62129443',
+  'unifunc' => 'content_5f7b93ae6db5e4_32058509',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2848050e63f5f9d592b3c2a08051bb31e913efb2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\autorzy\\index.tpl',
-      1 => 1601924104,
+      1 => 1601934249,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../inc/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7b6c0fb68bc8_62129443 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7b93ae6db5e4_32058509 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container-fluid ml-auto">
@@ -40,11 +40,11 @@ $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_i
         <tbody class="">
         <?php if ((!empty($_smarty_tpl->tpl_vars['autorzy']->value) && count($_smarty_tpl->tpl_vars['autorzy']->value) > 0)) {?>
             <tr>
-                <td><input type="text" class="form-control" id="search_first_name"></td>
-                <td><input type="text" class="form-control" id="search_last_name"></td>
-                <td><input type="date" class="form-control" id="search_birthdate"></td>
-                <td><select class="form-control">
-                        <option selected>Wybierz</option>
+                <td><input type="text" class="form-control search" id="search_first_name"></td>
+                <td><input type="text" class="form-control search" id="search_last_name"></td>
+                <td><input type="text" class="form-control seacrh" id="search_birthdate"></td>
+                <td><select class="form-control search" id="search_active">
+                        <option selected disabled>Wybierz</option>
                         <option value="1">Tak</option>
                         <option value="0">Nie</option>
                     </select></td>
@@ -56,7 +56,7 @@ $_smarty_tpl->tpl_vars['autor']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['autor']->value) {
 $_smarty_tpl->tpl_vars['autor']->do_else = false;
 ?>
-        <tr>
+        <tr class="ajax">
             <td><?php echo $_smarty_tpl->tpl_vars['autor']->value['imie'];?>
 </td>
             <td><?php echo $_smarty_tpl->tpl_vars['autor']->value['nazwisko'];?>
@@ -69,8 +69,7 @@ $_smarty_tpl->tpl_vars['autor']->do_else = false;
                 <form action="/autorzy/delete" method="post">
                     <div class="form-row">
                         <div class="col">
-                            <a href="<?php echo '<?php ';?>
-echo action('producers/show/') . $autor['id']; <?php echo '?>';?>
+                            <a href="/ksiazki/show/<?php echo $_smarty_tpl->tpl_vars['autor']->value['id'];?>
 "
                                class="btn btn-sm btn-primary">Pokaż książki</a>
                         </div>
@@ -100,8 +99,58 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </tbody>
     </table>
 </div>
-<?php echo '<?php
-';
-$_smarty_tpl->_subTemplateRender("file:../inc/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+
+    <?php echo '<script'; ?>
+>
+        $(function (){
+            $('#search_birthdate').datepicker({dateFormat:"yy-mm-dd", yearRange: "1950:2022",
+                changeMonth: true,
+                changeYear: true});
+            $('.search').on('keyup change', function (){
+                let imie = $('#search_first_name').val();
+                let nazwisko = $('#search_last_name').val();
+                let urodziny = $('#search_birthdate').val();
+                let aktywny = $('#search_active').val();
+                $.ajax({
+                    method: "post",
+                    url: "/autorzy/ajax_filter",
+                    data: {ajax:{imie: imie, nazwisko: nazwisko, data_urodzenia: urodziny, aktywny: aktywny}},
+                    success: function ($data) {
+                        let wynik = JSON.parse($data);
+                        wynik = wynik.odp
+                        let html = '';
+                        for (let prop in wynik){
+                            if(prop != 'id') {
+                                html += '<td>' + wynik[prop] + '</td>';
+                                if (prop == 'aktywny') {
+                                    html +=`<td><form action="/autorzy/delete" method="post">
+                                        <div class="form-row">
+                                           <div class="col">
+                                             <a href="/ksiazki/show/${wynik.id}" class="btn btn-sm btn-primary">Pokaż książki</a>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <a href="/autorzy/edit/${wynik.id}"
+                                                                       class="btn btn-sm btn-info">Edytuj</a>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="hidden" name="id" value="${wynik.id}">
+                                                                    <input class="btn btn-danger btn-sm" type="submit" value="Kasuj"
+                                                                           onclick="return confirm(\'Czy jesteś pewien, że chcesz usunąć tego autora?\')">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </td>`;
+                                }
+                            }
+                        }
+                        $('.ajax').empty().first().html(html);
+                    }
+                });
+            });
+        });
+    <?php echo '</script'; ?>
+>
+
+<?php $_smarty_tpl->_subTemplateRender("file:../inc/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }

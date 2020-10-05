@@ -9,18 +9,17 @@ use App\Model\Ksiazka;
 
 class Ksiazki extends Controller
 {
-    private $product;
+    private $ksiazka;
 
     public function __construct()
     {
-        $this->product = new Product();
+        $this->ksiazka = new Ksiazka();
     }
 
 
     public function index()
     {
-        $check_producer = $this->product->query("SELECT COUNT(*) FROM producers");
-        $products = $this->product->query("SELECT pr.*, p.name as producer FROM producers p, products pr WHERE p.id=pr.producer_id");
+        $ksiazki = $this->ksiazka->all();
 //var_dump($products);
         $this->view('products/index', ['title' => 'Products', 'check_producer' => array_shift($check_producer), 'products' => $products]);
     }

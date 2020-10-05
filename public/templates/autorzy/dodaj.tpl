@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="birthday">Data urodzenia</label>
-                <input class="form-control" type="date" name="birthday" id="birthday">
+                <input class="form-control" type="text" name="birthday" id="birthday">
             </div>
             <div class="form-group">
                 <label for="name">Czy aktywny</label>
@@ -31,4 +31,13 @@
     </form>
 
 </div>
+{literal}
+    <script>
+        $(function (){
+            $('#birthday').datepicker({dateFormat:"yy-mm-dd", yearRange: "1950:2022",
+                changeMonth: true,
+                changeYear: true});
+        });
+    </script>
+{/literal}
 {include file="../inc/footer.tpl"}

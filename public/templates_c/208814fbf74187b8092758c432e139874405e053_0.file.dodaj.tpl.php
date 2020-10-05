@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 00:48:13
+/* Smarty version 3.1.36, created on 2020-10-05 22:22:06
   from 'C:\xampp\htdocs\biblioteka\public\templates\autorzy\dodaj.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7a512d4b37d2_45601800',
+  'unifunc' => 'content_5f7b806ec5d398_25806133',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '208814fbf74187b8092758c432e139874405e053' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\autorzy\\dodaj.tpl',
-      1 => 1601851676,
+      1 => 1601929322,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../inc/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7a512d4b37d2_45601800 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7b806ec5d398_25806133 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -39,7 +39,7 @@ $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_i
             </div>
             <div class="form-group">
                 <label for="birthday">Data urodzenia</label>
-                <input class="form-control" type="date" name="birthday" id="birthday">
+                <input class="form-control" type="text" name="birthday" id="birthday">
             </div>
             <div class="form-group">
                 <label for="name">Czy aktywny</label>
@@ -57,6 +57,15 @@ $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_i
     </form>
 
 </div>
+
+    <?php echo '<script'; ?>
+>
+        $(function (){
+            $('#birthday').datepicker({dateFormat:"yy-mm-dd", changeYear: true});
+        });
+    <?php echo '</script'; ?>
+>
+
 <?php $_smarty_tpl->_subTemplateRender("file:../inc/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }
