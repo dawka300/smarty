@@ -36,8 +36,8 @@ class Smrt
         return self::$stmt->display($template, $cache_id, $compile_id, $parent);
     }
 
-    public static function fetch($template, $cache_id = null, $compile_id = null, $parent = null, $display = false) {
-        return self::$stmt->fetch($template,$cache_id,$compile_id,$parent,$display);
+    public static function fetch($template = null, $cache_id = null, $compile_id = null, $parent = null) {
+        return self::$stmt->fetch($template = null, $cache_id = null, $compile_id = null, $parent = null);
     }
 
     public static function assign($tpl_var, $value = null, $nocache = false) {

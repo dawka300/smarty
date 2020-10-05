@@ -12,6 +12,7 @@ class Pages extends Controller {
     public function __construct()
     {
         $this->simpleModel=new Simple();
+        parent::__construct();
     }
 
     public function index(){
@@ -20,6 +21,9 @@ class Pages extends Controller {
         $ksiazki=$this->simpleModel->queryRow("SELECT COUNT(*) FROM ksiazka");
 
 //        $this->view('index', ['title'=>'Main Site', 'producers'=>array_shift($producers), 'products'=>array_shift($products), 'orders'=>array_shift($orders)]);
-        $this->view('index', ['title'=>'Main Site' ]);
+//        $this->view('index', ['title'=>'Main Site' ]);
+
+        $this->smarty::assign('autorzy', $autorzy);
+       $this->smarty->display('index.tpl');
     }
 }

@@ -59,10 +59,10 @@ class Autorzy extends Controller {
 
     public function edit($id){
 
-        $autor = $this->autor->find($id);
+        $autor = $this->autor->find((int)$id);
         $this->smarty->assign('autor', $autor);
 
-        $this->smarty->display('autorzy/edytuj');
+        $this->smarty->display('autorzy/edytuj.tpl');
 
     }
 

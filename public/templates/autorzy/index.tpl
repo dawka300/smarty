@@ -17,7 +17,8 @@
                 <td><input type="text" class="form-control" id="search_first_name"></td>
                 <td><input type="text" class="form-control" id="search_last_name"></td>
                 <td><input type="date" class="form-control" id="search_birthdate"></td>
-                <td><select>
+                <td><select class="form-control">
+                        <option selected>Wybierz</option>
                         <option value="1">Tak</option>
                         <option value="0">Nie</option>
                     </select></td>
@@ -30,18 +31,18 @@
             <td>{$autor.data_urodzenia}</td>
             <td>{aktywny number=$autor.aktywny}</td>
             <td>
-                <form action="<?php echo action('autorzy/delete') ?>" method="post">
+                <form action="/autorzy/delete" method="post">
                     <div class="form-row">
                         <div class="col">
                             <a href="<?php echo action('producers/show/') . $autor['id']; ?>"
                                class="btn btn-sm btn-primary">Pokaż książki</a>
                         </div>
                         <div class="col">
-                            <a href="<?php echo action('autorzy/edit/') . $autor['id']; ?>"
+                            <a href="/autorzy/edit/{$autor.id}"
                                class="btn btn-sm btn-info">Edytuj</a>
                         </div>
                         <div class="col">
-                            <input type="hidden" name="id" value="<?php echo $autor['id'] ?>">
+                            <input type="hidden" name="id" value="{$autor.id}">
                             <input class="btn btn-danger btn-sm" type="submit" value="Kasuj"
                                    onclick="return confirm('Czy jesteś pewien, że chcesz usunąć tego autora?')">
                         </div>
