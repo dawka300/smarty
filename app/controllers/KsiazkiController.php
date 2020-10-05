@@ -4,8 +4,9 @@ namespace App\Controller;
 
 
 use App\Library\Controller;
+use App\Model\Autor;
+use App\Model\Gatunek;
 use App\Model\Ksiazka;
-//use App\Model\Product;
 
 class Ksiazki extends Controller
 {
@@ -14,30 +15,40 @@ class Ksiazki extends Controller
     public function __construct()
     {
         $this->ksiazka = new Ksiazka();
+        parent::__construct();
     }
 
 
     public function index()
     {
-        $ksiazki = $this->ksiazka->all();
-//var_dump($products);
-        $this->view('products/index', ['title' => 'Products', 'check_producer' => array_shift($check_producer), 'products' => $products]);
+        $sql = "SELECT k.tytul, k.isbn, k.liczba_stron, k.opis, k.cena_netto, k.cena_brutto, CONCAT(a.imie, ' ', a.nazwisko) FROM ksiazka k LEFT JOIN autor a ON k.id_autor=a.id";
+        $ksiazki = $this->ksiazka->query($sql);
+
+        $this->smarty::assign('ksiazki', $ksiazki);
+
+        $this->smarty::display('ksiazki/index.tpl');
     }
 
     public function add()
     {
-        $producers = new Producer();
-        $producers = $producers->all();
+        $autorzy = new Autor();
+        $autorzy = $autorzy->allActive();
+        $gatunki = new Gatunek();
+        $gatunki = $gatunki->allActive();
 
-        $this->view('products/addProduct', ['title' => 'Add Product', 'producers' => $producers]);
+        $this->smarty::assign('autorzy', $autorzy);
+        $this->smarty::assign('gatunki', $gatunki);
+        $this->smarty::display('ksiazki/dodaj.tpl');
     }
 
     public function edit($id)
     {
-        $producers = new Producer();
-        $producers = $producers->all();
+        $autorzy = new Autor();
+        $autorzy = $autorzy->allActive();
+        $gatunki = new Gatunek();
+        $gatunki = $gatunki->allActive();
 
-        $product = $this->product->find($id);
+        $ksiazka = $this->ksiazka->find($id);
 
 
         $this->view('products/editProduct', ['title' => 'Edit product', 'product' => $product, 'producers' => $producers]);

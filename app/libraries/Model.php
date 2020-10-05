@@ -13,29 +13,6 @@ abstract class Model extends ModelSimple {
     abstract public function update(int $id);
 
 
-    /*public function query(string $query)
-    {
-        try {
-            $stmt = $this->dbh->prepare($query);
-            $stmt->execute();
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            return $results;
-        } catch (\PDOException $e) {
-            exit($e->getMessage());
-        }
-    }
-    public function queryRow(string $query){
-        try {
-            $stmt=$this->dbh->prepare($query);
-            $stmt->execute();
-            $results=$stmt->fetch(PDO::FETCH_ASSOC);
-
-            return $results;
-        }catch (\PDOException $e){
-            exit($e->getMessage());
-        }
-    }*/
     public function find(int $id)
     {
         if (empty($id)) {
@@ -75,6 +52,19 @@ abstract class Model extends ModelSimple {
     public function all()
     {
         $sql = "SELECT * FROM " . $this->table . " ";
+        try {
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $results;
+
+        } catch (\PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+    public function allActive(){
+        $sql = "SELECT * FROM " . $this->table . " WHERE aktywny=1";
         try {
             $stmt = $this->dbh->prepare($sql);
             $stmt->execute();

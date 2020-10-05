@@ -27,7 +27,7 @@
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="/autorzy">Autorzy <span class="sr-only">(current)</span></a>
                 <!--                <a class="nav-item nav-link" href="--><?php //echo action('gatunek')?><!--">Gatunki literackie</a>-->
-                <a class="nav-item nav-link" href="--><?php //echo action('ksiazki')?><!--">Książki</a>
+                <a class="nav-item nav-link" href="/ksiazki/index">Książki</a>
                 <!--                <a class="nav-item nav-link" href="--><?php //echo action('reports')?><!--">Reports</a>-->
 
             </div>

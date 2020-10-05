@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 22:20:26
+/* Smarty version 3.1.36, created on 2020-10-05 23:47:35
   from 'C:\xampp\htdocs\biblioteka\public\templates\inc\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7b800a7b0699_11197753',
+  'unifunc' => 'content_5f7b9477d928c3_51402807',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ddcf5bfc9ffb499bc3186a0dd7b29826142f3a72' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\inc\\header.tpl',
-      1 => 1601929211,
+      1 => 1601934452,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f7b800a7b0699_11197753 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7b9477d928c3_51402807 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="pl">
 <head>
@@ -54,9 +54,7 @@ function content_5f7b800a7b0699_11197753 (Smarty_Internal_Template $_smarty_tpl)
                 <!--                <a class="nav-item nav-link" href="--><?php echo '<?php ';?>
 //echo action('gatunek')<?php echo '?>';?>
 <!--">Gatunki literackie</a>-->
-                <a class="nav-item nav-link" href="--><?php echo '<?php ';?>
-//echo action('ksiazki')<?php echo '?>';?>
-<!--">Książki</a>
+                <a class="nav-item nav-link" href="/ksiazki/index">Książki</a>
                 <!--                <a class="nav-item nav-link" href="--><?php echo '<?php ';?>
 //echo action('reports')<?php echo '?>';?>
 <!--">Reports</a>-->

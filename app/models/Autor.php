@@ -22,8 +22,6 @@ class Autor extends Model {
     public function __construct()
     {
         $this->dbh=Database::getInstance()->getDb();
-//        $this->db->setTable($this->table);
-//        $this->dbh=$this->db->getDb();
     }
 
 
@@ -31,7 +29,7 @@ class Autor extends Model {
     public function save() : void
     {
         $sql="INSERT INTO ".$this->table." VALUES (null, :imie, :nazwisko, :data_urodzenia, :aktywny, NOW(), null)";
-//        var_dump($sql);
+
         try {
         $stmt=$this->dbh->prepare($sql);
         $stmt->bindParam(":imie", $this->imie, PDO::PARAM_STR);
@@ -69,6 +67,8 @@ class Autor extends Model {
 
         return $array[$number];
     }
+
+
 
 
 

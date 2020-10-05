@@ -17,23 +17,15 @@
         </thead>
         <tbody class="">
         {if (!empty($ksiazki) && count($ksiazki) > 0) }
-            <tr>
-                <td><input type="text" class="form-control" id="search_first_name"></td>
-                <td><input type="text" class="form-control" id="search_last_name"></td>
-                <td><input type="text" class="form-control" id="search_birthdate"></td>
-                <td><select class="form-control">
-                        <option selected>Wybierz</option>
-                        <option value="1">Tak</option>
-                        <option value="0">Nie</option>
-                    </select></td>
-                <td></td>
-            </tr>
             {foreach $ksiazki as $ksiazka}
                 <tr>
-                    <td>{$ksiazka.imie}</td>
-                    <td>{$ksiazka.nazwisko}</td>
-                    <td>{$ksiazka.data_urodzenia}</td>
-                    <td>{aktywny number=$ksiazka.aktywny}</td>
+                    <td>{$ksiazka.autor}</td>
+                    <td>{$ksiazka.tytul}</td>
+                    <td>{$ksiazka.isbn}</td>
+                    <td>{$ksiazka.liczba_stron}</td>
+                    <td>{$ksiazka.isbn}</td>
+                    <td>{$ksiazka.isbn}</td>
+{*                    <td>{aktywny number=$ksiazka.aktywny}</td>*}
                     <td>
                         <form action="/autorzy/delete" method="post">
                             <div class="form-row">
@@ -57,19 +49,11 @@
             {/foreach}
         {else}
             <tr>
-                <td class="text-center" colspan="5">Brak autorów</td>
+                <td class="text-center" colspan="5">Brak książek</td>
             </tr>
         {/if}
         </tbody>
     </table>
 </div>
-{literal}
-    <script>
-        $(function (){
-            $('#search_birthdate').datepicker({dateFormat:"yy-mm-dd", yearRange: "1950:2022",
-                changeMonth: true,
-                changeYear: true});
-        });
-    </script>
-{/literal}
+
 {include file="../inc/footer.tpl"}
