@@ -40,6 +40,7 @@ class ComposerStaticInit844940e035839619680bbd785014914c
         'App\\Library\\Database' => __DIR__ . '/../..' . '/app/libraries/Database.php',
         'App\\Library\\Model' => __DIR__ . '/../..' . '/app/libraries/Model.php',
         'App\\Library\\ModelSimple' => __DIR__ . '/../..' . '/app/libraries/ModelSimple.php',
+        'App\\Library\\Smrt' => __DIR__ . '/../..' . '/app/libraries/Smrt.php',
         'App\\Model\\Autor' => __DIR__ . '/../..' . '/app/models/Autor.php',
         'App\\Model\\Gatunek' => __DIR__ . '/../..' . '/app/models/Gatunek.php',
         'App\\Model\\Ksiazka' => __DIR__ . '/../..' . '/app/models/Ksiazka.php',

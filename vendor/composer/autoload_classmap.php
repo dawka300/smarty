@@ -15,6 +15,7 @@ return array(
     'App\\Library\\Database' => $baseDir . '/app/libraries/Database.php',
     'App\\Library\\Model' => $baseDir . '/app/libraries/Model.php',
     'App\\Library\\ModelSimple' => $baseDir . '/app/libraries/ModelSimple.php',
+    'App\\Library\\Smrt' => $baseDir . '/app/libraries/Smrt.php',
     'App\\Model\\Autor' => $baseDir . '/app/models/Autor.php',
     'App\\Model\\Gatunek' => $baseDir . '/app/models/Gatunek.php',
     'App\\Model\\Ksiazka' => $baseDir . '/app/models/Ksiazka.php',
