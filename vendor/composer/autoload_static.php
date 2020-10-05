@@ -31,6 +31,19 @@ class ComposerStaticInit844940e035839619680bbd785014914c
     );
 
     public static $classMap = array (
+        'App\\Controller\\Autorzy' => __DIR__ . '/../..' . '/app/controllers/AutorzyController.php',
+        'App\\Controller\\Gatunki' => __DIR__ . '/../..' . '/app/controllers/GatunkiController.php',
+        'App\\Controller\\Ksiazki' => __DIR__ . '/../..' . '/app/controllers/KsiazkiController.php',
+        'App\\Controller\\Pages' => __DIR__ . '/../..' . '/app/controllers/PagesController.php',
+        'App\\Library\\Controller' => __DIR__ . '/../..' . '/app/libraries/Controller.php',
+        'App\\Library\\Core' => __DIR__ . '/../..' . '/app/libraries/Core.php',
+        'App\\Library\\Database' => __DIR__ . '/../..' . '/app/libraries/Database.php',
+        'App\\Library\\Model' => __DIR__ . '/../..' . '/app/libraries/Model.php',
+        'App\\Library\\ModelSimple' => __DIR__ . '/../..' . '/app/libraries/ModelSimple.php',
+        'App\\Model\\Autor' => __DIR__ . '/../..' . '/app/models/Autor.php',
+        'App\\Model\\Gatunek' => __DIR__ . '/../..' . '/app/models/Gatunek.php',
+        'App\\Model\\Ksiazka' => __DIR__ . '/../..' . '/app/models/Ksiazka.php',
+        'App\\Model\\Simple' => __DIR__ . '/../..' . '/app/models/Simple.php',
         'Smarty' => __DIR__ . '/..' . '/smarty/smarty/libs/Smarty.class.php',
         'SmartyBC' => __DIR__ . '/..' . '/smarty/smarty/libs/SmartyBC.class.php',
         'SmartyCompilerException' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smartycompilerexception.php',

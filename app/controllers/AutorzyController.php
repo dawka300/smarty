@@ -12,7 +12,9 @@ class Autorzy extends Controller {
 
     public function __construct()
     {
+        parent::__construct();
         $this->autor = new Autor();
+
     }
 
 
@@ -20,12 +22,17 @@ class Autorzy extends Controller {
 
         $autorzy = $this->autor->all();
 
-        $this->view('autorzy/index', ['title' => 'Autorzy', 'autorzy'=> $autorzy ]);
+
+        $this->smarty->assign('autorzy', $autorzy);
+        $this->smarty->registerPlugin('function', 'aktywny', 'is_active');
+
+        $this->smarty->display('autorzy/index.tpl');
+
     }
 
     public function add(){
 
-        $this->view('autorzy/dodaj', ['title' => 'Dodaj autora']);
+        $this->smarty->display('autorzy/dodaj.tpl');
 
     }
     public function store(){
@@ -53,8 +60,9 @@ class Autorzy extends Controller {
     public function edit($id){
 
         $autor = $this->autor->find($id);
+        $this->smarty->assign('autor', $autor);
 
-        $this->view('autorzy/edytuj', ['title' => 'Edytuj autora', 'autor' => $autor]);
+        $this->smarty->display('autorzy/edytuj');
 
     }
 
@@ -106,6 +114,46 @@ class Autorzy extends Controller {
 
         $producer=$this->producer->find($id);
         $this->view('producers/showProducts', ['title'=>'Producer\'s products', 'products'=>$products, 'producer'=>$producer]);
+
+    }
+
+    public function ajax_filter(){
+        if(empty($_POST['ajax'])){
+           return null;
+        }
+        $sql = $this->createSql($_POST['ajax']);
+
+    }
+    protected function createSql(array $post) : string
+    {
+        $sql = "SELECT * FROM autor WHERE";
+        $count = false;
+        if($post['imie']){
+            $sql .= " imie LIKE '%". $post['imie'] ."%' ";
+            $count = true;
+        }
+        if($post['nazwisko']){
+            if($count){
+                $sql .= " AND ";
+            }
+            $sql .= " nazwisko LIKE '%". $post['nazwisko'] ."%' ";
+            $count = true;
+        }
+        if($post['data_urodzenia']){
+            if($count){
+                $sql .= " AND ";
+            }
+            $sql .= " data_urodzenia='".$post['data_urodzenia']."' ";
+            $count = true;
+        }
+        if($post['aktywny']){
+            if($count){
+                $sql .= " AND ";
+            }
+            $sql .= " aktywny='".$post['aktywny']."' ";
+        }
+
+        return $sql;
 
     }
 }

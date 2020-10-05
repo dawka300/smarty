@@ -63,6 +63,13 @@ class Autor extends Model {
 
     }
 
+    public function is_active(int $number) : string
+    {
+        $array = [0 => 'Niekatywny', 1 => 'Aktywny'];
+
+        return $array[$number];
+    }
+
 
 
 

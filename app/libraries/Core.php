@@ -23,8 +23,9 @@ class Core
 
 //        require_once dirname(__DIR__).'/controllers/'.$this->currentController.'Controller.php';
         $this->currentController = "App\\Controller\\" . $this->currentController;
+//        var_dump($this->currentController);
         $this->currentController = new $this->currentController;
-//var_dump($url);
+
 //exit();
         if (isset($url[1])){
             if (method_exists($this->currentController, $url[1])){
