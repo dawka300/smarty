@@ -34,10 +34,6 @@
                 <form action="/autorzy/delete" method="post">
                     <div class="form-row">
                         <div class="col">
-                            <a href="/ksiazki/show/{$autor.id}"
-                               class="btn btn-sm btn-primary">Pokaż książki</a>
-                        </div>
-                        <div class="col">
                             <a href="/autorzy/edit/{$autor.id}"
                                class="btn btn-sm btn-info">Edytuj</a>
                         </div>
@@ -84,9 +80,6 @@
                                 if (prop == 'aktywny') {
                                     html +=`<td><form action="/autorzy/delete" method="post">
                                         <div class="form-row">
-                                           <div class="col">
-                                             <a href="/ksiazki/show/${wynik.id}" class="btn btn-sm btn-primary">Pokaż książki</a>
-                                                                </div>
                                                                 <div class="col">
                                                                     <a href="/autorzy/edit/${wynik.id}"
                                                                        class="btn btn-sm btn-info">Edytuj</a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 23:44:14
+/* Smarty version 3.1.36, created on 2020-10-06 02:47:30
   from 'C:\xampp\htdocs\biblioteka\public\templates\autorzy\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7b93ae6db5e4_32058509',
+  'unifunc' => 'content_5f7bbea279a031_98544231',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2848050e63f5f9d592b3c2a08051bb31e913efb2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\autorzy\\index.tpl',
-      1 => 1601934249,
+      1 => 1601945236,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../inc/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7b93ae6db5e4_32058509 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7bbea279a031_98544231 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container-fluid ml-auto">
@@ -68,11 +68,6 @@ $_smarty_tpl->tpl_vars['autor']->do_else = false;
             <td>
                 <form action="/autorzy/delete" method="post">
                     <div class="form-row">
-                        <div class="col">
-                            <a href="/ksiazki/show/<?php echo $_smarty_tpl->tpl_vars['autor']->value['id'];?>
-"
-                               class="btn btn-sm btn-primary">Pokaż książki</a>
-                        </div>
                         <div class="col">
                             <a href="/autorzy/edit/<?php echo $_smarty_tpl->tpl_vars['autor']->value['id'];?>
 "
@@ -125,9 +120,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 if (prop == 'aktywny') {
                                     html +=`<td><form action="/autorzy/delete" method="post">
                                         <div class="form-row">
-                                           <div class="col">
-                                             <a href="/ksiazki/show/${wynik.id}" class="btn btn-sm btn-primary">Pokaż książki</a>
-                                                                </div>
                                                                 <div class="col">
                                                                     <a href="/autorzy/edit/${wynik.id}"
                                                                        class="btn btn-sm btn-info">Edytuj</a>

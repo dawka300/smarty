@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 21:12:13
+/* Smarty version 3.1.36, created on 2020-10-06 02:50:07
   from 'C:\xampp\htdocs\biblioteka\public\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7b700d002223_51798710',
+  'unifunc' => 'content_5f7bbf3f3bd621_05994023',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6d0f44d8f11f8cb355c1c1c47c66321b60150a5f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\index.tpl',
-      1 => 1601925130,
+      1 => 1601945403,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:inc/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7b700d002223_51798710 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7bbf3f3bd621_05994023 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:inc/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="container">
@@ -42,24 +42,22 @@ $_smarty_tpl->_subTemplateRender("file:inc/header.tpl", $_smarty_tpl->cache_id, 
                 <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Number of products
+                            Liczba książek
                         </div>
                         <div class="card-body">
-<!--                            <h5 class="card-title">--><?php echo '<?php ';?>
-//echo $data['products']<?php echo '?>';?>
-<!--</h5>-->
+                            <?php echo array_shift($_smarty_tpl->tpl_vars['ksiazki']->value);?>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Number of orders
+                            Liczba gatunków literackich
                         </div>
                         <div class="card-body">
-<!--                            <h5 class="card-title">--><?php echo '<?php ';?>
-//echo $data['orders']<?php echo '?>';?>
-<!--</h5>-->
+                            <?php echo array_shift($_smarty_tpl->tpl_vars['gatunki']->value);?>
+
                         </div>
                     </div>
                 </div>

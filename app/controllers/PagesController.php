@@ -20,10 +20,11 @@ class Pages extends Controller {
         $gatunki=$this->simpleModel->queryRow("SELECT COUNT(*) FROM gatunki_literackie");
         $ksiazki=$this->simpleModel->queryRow("SELECT COUNT(*) FROM ksiazka");
 
-//        $this->view('index', ['title'=>'Main Site', 'producers'=>array_shift($producers), 'products'=>array_shift($products), 'orders'=>array_shift($orders)]);
-//        $this->view('index', ['title'=>'Main Site' ]);
+
 
         $this->smarty::assign('autorzy', $autorzy);
+        $this->smarty::assign('ksiazki', $ksiazki);
+        $this->smarty::assign('gatunki', $gatunki);
        $this->smarty->display('index.tpl');
     }
 }

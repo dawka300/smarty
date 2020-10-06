@@ -15,20 +15,20 @@
                 <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Number of products
+                            Liczba książek
                         </div>
                         <div class="card-body">
-<!--                            <h5 class="card-title">--><?php //echo $data['products']?><!--</h5>-->
+                            {array_shift($ksiazki)}
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Number of orders
+                            Liczba gatunków literackich
                         </div>
                         <div class="card-body">
-<!--                            <h5 class="card-title">--><?php //echo $data['orders']?><!--</h5>-->
+                            {array_shift($gatunki)}
                         </div>
                     </div>
                 </div>

@@ -31,10 +31,6 @@
                         <form action="/ksiazki/delete" method="post">
                             <div class="form-row">
                                 <div class="col">
-                                    <a href="/ksiazki/show/{$ksiazka.id}"
-                                       class="btn btn-sm btn-primary">Pokaż książki</a>
-                                </div>
-                                <div class="col">
                                     <a href="/ksiazki/edit/{$ksiazka.id}"
                                        class="btn btn-sm btn-info">Edytuj</a>
                                 </div>
