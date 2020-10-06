@@ -23,18 +23,19 @@
                     <td>{$ksiazka.tytul}</td>
                     <td>{$ksiazka.isbn}</td>
                     <td>{$ksiazka.liczba_stron}</td>
-                    <td>{$ksiazka.isbn}</td>
-                    <td>{$ksiazka.isbn}</td>
-{*                    <td>{aktywny number=$ksiazka.aktywny}</td>*}
+                    <td>{$ksiazka.opis}</td>
+                    <td>{$ksiazka.cena_netto}</td>
+                    <td>{$ksiazka.cena_brutto}</td>
+                    <td>{if $ksiazka.aktywna == 1}TAK{else}NIE{/if}</td>
                     <td>
-                        <form action="/autorzy/delete" method="post">
+                        <form action="/ksiazki/delete" method="post">
                             <div class="form-row">
                                 <div class="col">
                                     <a href="/ksiazki/show/{$ksiazka.id}"
                                        class="btn btn-sm btn-primary">Pokaż książki</a>
                                 </div>
                                 <div class="col">
-                                    <a href="/autorzy/edit/{$ksiazka.id}"
+                                    <a href="/ksiazki/edit/{$ksiazka.id}"
                                        class="btn btn-sm btn-info">Edytuj</a>
                                 </div>
                                 <div class="col">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-10-05 22:20:35
+/* Smarty version 3.1.36, created on 2020-10-06 02:15:37
   from 'C:\xampp\htdocs\biblioteka\public\templates\autorzy\edytuj.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f7b8013106e46_71868257',
+  'unifunc' => 'content_5f7bb7293eed11_65502998',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '750068197c3a0b89ca6548aed97908962370d098' => 
     array (
       0 => 'C:\\xampp\\htdocs\\biblioteka\\public\\templates\\autorzy\\edytuj.tpl',
-      1 => 1601929177,
+      1 => 1601930208,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../inc/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7b8013106e46_71868257 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7bb7293eed11_65502998 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -65,7 +65,9 @@ $_smarty_tpl->_subTemplateRender("file:../inc/header.tpl", $_smarty_tpl->cache_i
     <?php echo '<script'; ?>
 >
         $(function (){
-            $('#search_birthdate').datepicker({dateFormat:"yy-mm-dd", changeYear: true});
+            $('#search_birthdate').datepicker({dateFormat:"yy-mm-dd", yearRange: "1950:2022",
+                changeMonth: true,
+                changeYear: true});
         });
     <?php echo '</script'; ?>
 >

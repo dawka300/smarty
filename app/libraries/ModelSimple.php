@@ -34,4 +34,16 @@ abstract class ModelSimple {
         }
     }
 
+    public function lastId(){
+        $query = "SELECT LAST_INSERT_ID()";
+        try {
+            $stmt = $this->dbh->query($query);
+            $results = $stmt->fetchColumn();
+
+            return $results;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
 }

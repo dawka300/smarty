@@ -41,14 +41,17 @@ class Ksiazka extends Model
 
     public function save(): void
     {
-        $sql = "INSERT INTO " . $this->table . " VALUES (null, :name, :id_autor, :tytul, :isbn, :quantity, null, null)";
+        $sql = "INSERT INTO " . $this->table . " VALUES (null, :id_autor, :tytul, :isbn, :liczba_stron, :opis, :netto, :brutto, :aktywna, NOW(), null)";
         try {
             $stmt = $this->dbh->prepare($sql);
             $stmt->bindParam(":id_autor", $this->id_autor, PDO::PARAM_INT);
             $stmt->bindParam(":tytul", $this->tytul, PDO::PARAM_STR);
-            $stmt->bindParam(":price", $this->price, PDO::PARAM_STR);
-            $stmt->bindParam(":tax", $this->tax, PDO::PARAM_STR);
-            $stmt->bindParam(":quantity", $this->quantity, PDO::PARAM_STR);
+            $stmt->bindParam(":isbn", $this->isbn, PDO::PARAM_STR);
+            $stmt->bindParam(":liczba_stron", $this->liczba_stron, PDO::PARAM_INT);
+            $stmt->bindParam(":opis", $this->opis, PDO::PARAM_STR);
+            $stmt->bindParam(":netto", $this->cena_netto, PDO::PARAM_STR);
+            $stmt->bindParam(":brutto", $this->cena_brutto, PDO::PARAM_STR);
+            $stmt->bindParam(":aktywna", $this->aktywna, PDO::PARAM_INT);
             $stmt->execute();
         } catch (\PDOException $e) {
             die($e->getMessage());
@@ -57,9 +60,9 @@ class Ksiazka extends Model
 
     }
 
-    public function update($id): void
+    public function update(int $id): void
     {
-        $sql = "UPDATE " . $this->table . " SET name=:name, producer_id=:producer_id, price=:price, tax=:tax, quantity=:quantity WHERE id=:id";
+        $sql = "UPDATE " . $this->table . " SET id_autor=:id_autor, tytul=:tytul, isbn=:isbn, liczba_stron=:liczba_stron, :opis, :netto, :brutto, :aktywna WHERE id=:id";
         try{
         $stmt = $this->dbh->prepare($sql);
         $stmt->bindParam(":producer_id", $this->producer_id, PDO::PARAM_INT);

@@ -6,22 +6,21 @@
             <div class="form-group">
                 <label for="author">Autor</label>
                 <select class="form-control" name="author" id="author" required>
-                <option selected disabled>Wybierz</option>
-                {foreach $autorzy as $autor}
-                    <option value="{$autor.id}">{$autor.imie} {$autor.nazwisko}</option>
-                {/foreach}
+                    <option selected disabled>Wybierz</option>
+                    {foreach $autorzy as $autor}
+                        <option value="{$autor.id}">{$autor.imie} {$autor.nazwisko}</option>
+                    {/foreach}
                 </select>
             </div>
-
-                    {foreach $gatunki as $gatunek}
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gatunki[]" id="exampleRadios1" value="{$gatunek.id}">
-                            <label class="form-check-label" for="exampleRadios1">
-                                {var_dump($gatunek)}
-                            </label>
-                        </div>
-                    {/foreach}
-
+            {foreach $gatunki as $gatunek}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="genre[]" id="{$gatunek.nazwa}"
+                           value="{$gatunek.id}">
+                    <label class="form-check-label" for="{$gatunek.nazwa}">
+                        {$gatunek.nazwa}
+                    </label>
+                </div>
+            {/foreach}
 
             <div class="form-group">
                 <label for="title">Tutuł</label>
@@ -40,7 +39,15 @@
                 <textarea class="form-control" type="text" name="desc" id="desc"></textarea>
             </div>
             <div class="form-group">
-                <label for="name">Czy aktywny</label>
+                <label for="net_price">Cena netto</label>
+                <input class="form-control" type="number" min="0" step="0.01" name="net_price" id="net_price">
+            </div>
+            <div class="form-group">
+                <label for="gross_price">Cena brutto</label>
+                <input class="form-control" type="number" min="0" step="0.01" name="gross_price" id="gros_price">
+            </div>
+            <div class="form-group">
+                <label for="is_active">Czy aktywny</label>
                 <select class="form-control" id="is_active" name="is_active">
                     <option value="1" selected>Tak</option>
                     <option value="0">Nie</option>
@@ -57,11 +64,7 @@
 </div>
 {literal}
     <script>
-        $(function (){
-            $('#isbn').datepicker({dateFormat:"yy-mm-dd", yearRange: "1950:2022",
-                changeMonth: true,
-                changeYear: true});
-        });
+
     </script>
 {/literal}
 {include file="../inc/footer.tpl"}
